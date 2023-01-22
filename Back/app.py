@@ -11,13 +11,6 @@ key = b'iULF7CgWBtlgAtAZKVsQ9xeK2HUfdMnCFyovQ2FMgYw='
 fernet = Fernet(key)
 print(key)
 
-message = "hello geeks"
-encMessage = fernet.encrypt(message.encode())
-print("original string: ", message)
-print("encrypted string: ", encMessage)
-decMessage = fernet.decrypt(encMessage).decode() 
-print("decrypted string: ", decMessage)
-
 @app.route('/login',methods=['POST'])
 def checkCredentials():
     f = open('db.json','rt')
