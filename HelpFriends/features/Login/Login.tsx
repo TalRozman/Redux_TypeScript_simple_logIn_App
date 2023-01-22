@@ -28,16 +28,19 @@ const Login: React.FC<LoginProps> = () => {
             {isLoggedIn ? (
                 <>
                     <p>Welcome, {uName}!</p>
-                    <button onClick={() => dispatch(logout())}>Logout</button>
+                    <button onClick={() => { dispatch(logout()); }}>Logout</button>
                 </>
             ) : (
                 <>
                     <p>You are not logged in.</p>
-                    User Name - <input onKeyUp={(e) => { setuName(e.currentTarget.value) }} /><br />Password - <input type={'password'} onKeyUp={(e) => setpass(e.currentTarget.value)} autoComplete={'false'} autoSave="false"/><br />
-                    {(uName === "" || password === "") ? <p>Please fill all fields</p>:<><button onClick={() => login()}>Login</button><button onClick={() => addUser()}>Sign Up!</button></>}
-                    {status === 'Access Denied' ? <p>Incorrect password or user name.<br />Please try again.</p> : ""}
-                    {status === 'User Existed' && <p>User already exist! please log in</p>}
-                </>
+                    <form onSubmit={(e) => { e.currentTarget.reset(); e.preventDefault() }}>
+                        User Name - <input onKeyUp={(e) => { setuName(e.currentTarget.value) }} /><br />Password - <input type={'password'} onKeyUp={(e) => setpass(e.currentTarget.value)} autoComplete={'false'} autoSave="false" /><br />
+                        {(uName === "" || password === "") ? <p>Please fill all fields</p> : <><button onClick={() => login()}>Login</button><button onClick={() => addUser()}>Sign Up!</button></>}
+                        {status === 'Access Denied' ? <p>Incorrect password or user name.<br />Please try again.</p> : ""}
+                        {status === 'User Existed' && <p>User already exist! please log in</p>}
+                    </form>
+                    </>
+                
             )}
         </div>
     );
