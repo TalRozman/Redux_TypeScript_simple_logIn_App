@@ -16,6 +16,7 @@ Back -
   - Create virtual enviroment
   - Install python packages using requirements text file
   - Run python app
+  
 Front - 
   - npm i
   - npm start
